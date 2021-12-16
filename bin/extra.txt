@@ -1,0 +1,18 @@
+
+
+def scope_mail(to_mail, subject_mail, msg_mail):
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject_mail
+    msg['To'] = to_mail
+    mg_html = MIMEText(msg_mail, 'html')
+    msg.attach(mg_html)
+    return msg
+
+def send_mail_unique(server_mail, user, mensage):
+    msg = mensage
+    s = smtplib.SMTP_SSL(server_mail["host"], server_mail["port"])
+    s.login(user["user"], user["password"])
+    msg['From'] = user["user"]
+    s.sendmail(msg['From'], msg['To'], msg.as_string() )
+    s.quit()
+
