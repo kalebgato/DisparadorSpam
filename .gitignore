@@ -1,0 +1,6 @@
+*.ini
+*.db
+*.html
+*/__pycache__/*
+*.pyc
+*.txt
